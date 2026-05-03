@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getDepartmentBySlug, departments } from '../data/departments';
+import { getDepartmentBySlug } from '../data/departments';
 import DepartmentAbout from '../components/department/DepartmentAbout';
 import DepartmentFaculty from '../components/department/DepartmentFaculty';
 import DepartmentStudents from '../components/department/DepartmentStudents';
@@ -20,7 +20,6 @@ const DepartmentPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const dept = getDepartmentBySlug(slug || '');
     const [activeTab, setActiveTab] = useState('about');
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     if (!dept) {
         return (
@@ -47,7 +46,7 @@ const DepartmentPage: React.FC = () => {
                 return <DepartmentCourseStructure dept={dept} />;
             case 'program':
             case 'students':
-                return <DepartmentStudents dept={dept} />;
+                return <DepartmentStudents />;
             case 'gallery':
                 return <DepartmentGallery dept={dept} />;
             default:

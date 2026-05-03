@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { DepartmentData } from '../../data/departments';
-
-interface DepartmentStudentsProps {
-    dept: DepartmentData;
-}
 
 /* ── Year tabs ─────────────────────────────────────────── */
 const years = ['2025-26', '2024-25', '2023-24', '2022-23', '2021-22'];
@@ -190,7 +185,7 @@ const sections: SectionData[] = [
 
 /* ── Component ─────────────────────────────────────────── */
 
-const DepartmentStudents: React.FC<DepartmentStudentsProps> = ({ dept }) => {
+const DepartmentStudents: React.FC = () => {
     const [openSection, setOpenSection] = useState<string | null>('academic');
     const [activeYears, setActiveYears] = useState<Record<string, string>>(
         Object.fromEntries(sections.map((s) => [s.key, '2025-26']))
