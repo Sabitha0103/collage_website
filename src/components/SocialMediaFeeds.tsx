@@ -30,23 +30,23 @@ const SocialMediaFeeds: React.FC = () => {
         }
 
         script.onload = () => {
-            // @ts-ignore
+            // @ts-expect-error - Twitter library loaded via script
             if (window.twttr && window.twttr.widgets) {
-                // @ts-ignore
+                // @ts-expect-error - Twitter library loaded via script
                 window.twttr.widgets.load();
             }
         };
 
         // If the script is already loaded but component re-mounts
-        // @ts-ignore
+        // @ts-expect-error - Twitter library loaded via script
         if (window.twttr && window.twttr.widgets) {
-            // @ts-ignore
+            // @ts-expect-error - Twitter library loaded via script
             window.twttr.widgets.load();
         }
     }, []);
 
     return (
-        <section ref={ref} className="pt-16 lg:pt-20 pb-4 lg:pb-8 bg-neutral-50 relative">
+        <section ref={ref} className="pt-16 lg:pt-20 pb-4 lg:pb-8 bg-neutral-50 relative overflow-hidden">
             <div className="section-container">
                 {/* Header */}
                 <motion.div
@@ -65,44 +65,41 @@ const SocialMediaFeeds: React.FC = () => {
                         Stay updated with the latest news, events, and everyday life at our vibrant campus through our official digital channels.
                     </p>
                 </motion.div>
-
+ 
                 {/* Feeds Container */}
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-
+ 
                     {/* Left: Instagram Feed (Uses iframe embed) */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="bg-white rounded-2xl border border-neutral-200 shadow-sm flex flex-col w-full max-w-[400px] mx-auto overflow-hidden h-[600px] relative shrink-0"
+                        className="bg-white rounded-2xl border border-neutral-200 shadow-sm flex flex-col w-full max-w-[450px] mx-auto overflow-hidden h-[500px] md:h-[600px] relative"
                     >
                         <div className="absolute top-0 left-0 w-full h-full flex flex-col pt-4 overflow-hidden bg-neutral-50">
-                            <div className="flex justify-center mb-2 shrink-0 z-10 w-full">
-                                <a href="https://instagram.com/sritatp" target="_blank" rel="noreferrer" className="text-[14px] font-bold text-neutral-900 border border-neutral-200 bg-white px-4 py-1.5 rounded-full hover:bg-neutral-50 transition-colors shadow-sm text-center">
+                            <div className="flex justify-center mb-2 shrink-0 z-10 w-full px-4">
+                                <a href="https://instagram.com/sritatp" target="_blank" rel="noreferrer" className="text-[13px] md:text-[14px] font-bold text-neutral-900 border border-neutral-200 bg-white px-4 py-1.5 rounded-full hover:bg-neutral-50 transition-colors shadow-sm text-center truncate">
                                     View @sritatp on Instagram
                                 </a>
                             </div>
                             <div className="flex-1 w-full bg-white relative overflow-hidden mt-2">
-                                {/* Note: Native Instagram profile embedding without an API key or auth token often fails due to IG strict policies. 
-                                      For a robust production site, use a widget generator like Elfsight.com or Curator.io and drop the iframe here. */}
                                 <iframe
                                     src={INSTAGRAM_WIDGET_PLACEHOLDER}
                                     className="absolute top-[-50px] left-0 w-full h-[calc(100%+50px)] border-none"
                                     scrolling="yes"
-                                    frameBorder="0"
                                     title="Instagram Feed"
                                     allowTransparency={true}
                                 ></iframe>
                             </div>
                         </div>
                     </motion.div>
-
+ 
                     {/* Right: Twitter Feed (Uses Official Twitter Widget) */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.3 }}
-                        className="bg-white rounded-2xl border border-neutral-200 shadow-sm flex flex-col w-full max-w-[400px] mx-auto overflow-hidden h-[600px] overflow-y-auto custom-scrollbar shrink-0"
+                        className="bg-white rounded-2xl border border-neutral-200 shadow-sm flex flex-col w-full max-w-[450px] mx-auto overflow-hidden h-[500px] md:h-[600px] overflow-y-auto custom-scrollbar"
                     >
                         {/* Twitter Embed Timeline */}
                         <div id="twitter-feed-container" className="w-full h-full bg-neutral-50 p-4">

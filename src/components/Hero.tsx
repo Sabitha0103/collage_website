@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Content — left-aligned, cleared below navbar */}
-            <div className="relative z-10 section-container w-full pt-32 pb-24">
+            <div className="relative z-10 section-container w-full pt-24 md:pt-32 pb-16 md:pb-24">
                 <div className="max-w-2xl">
                     <motion.p
                         initial={{ opacity: 0 }}

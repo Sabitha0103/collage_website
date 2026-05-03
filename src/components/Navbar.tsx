@@ -3,7 +3,19 @@ import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-const navLinks = [
+interface SubItem {
+    label: string;
+    href: string;
+}
+
+interface NavLink {
+    label: string;
+    href: string;
+    hasDropdown: boolean;
+    subItems?: SubItem[];
+}
+
+const navLinks: NavLink[] = [
     { label: 'Home', href: '/', hasDropdown: false },
     { 
         label: 'About Us', 
@@ -82,7 +94,7 @@ const navLinks = [
         subItems: [
             { label: 'Anti-Ragging', href: '/#committees' },
             { label: 'Women Empowerment', href: '/#committees' },
-            { label: 'Grievance Redressal', href: '/#committees' }
+            { label: 'Grivelance Redressal', href: '/#committees' }
         ]
     },
     { 
@@ -96,7 +108,7 @@ const navLinks = [
     },
 ];
 
-const NavItem = ({ link, isSolid }: { link: any, isSolid: boolean }) => {
+const NavItem = ({ link, isSolid }: { link: NavLink, isSolid: boolean }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -123,7 +135,7 @@ const NavItem = ({ link, isSolid }: { link: any, isSolid: boolean }) => {
                             transition={{ duration: 0.2, ease: "easeOut" }}
                             className="absolute top-[80%] left-0 min-w-[220px] bg-white rounded-xl shadow-2xl border border-neutral-100 overflow-hidden py-2"
                         >
-                            {link.subItems?.map((sub: any, idx: number) => (
+                            {link.subItems?.map((sub: SubItem, idx: number) => (
                                 <a 
                                     key={idx} 
                                     href={sub.href}
@@ -169,7 +181,7 @@ const Navbar: React.FC = () => {
                 }`}
         >
             <div className="max-w-[1500px] mx-auto px-4 md:px-8">
-                <div className="flex items-center justify-center lg:justify-between h-[72px]">
+                <div className="flex items-center justify-between lg:justify-between h-[72px]">
                     {/* Desktop links — Fully Center/Expanded Layout */}
                     <div className="hidden w-full lg:flex items-center justify-center gap-4 xl:gap-6">
                         {navLinks.map((link) => (
@@ -180,21 +192,16 @@ const Navbar: React.FC = () => {
                     {/* Mobile hamburger */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="lg:hidden absolute left-4 relative w-6 h-5"
+                        className="lg:hidden relative w-6 h-5 z-50"
                         aria-label="Toggle menu"
                     >
-                        <span className={`absolute left-0 w-full h-[1.5px] transition-all duration-300 ${isSolid ? 'bg-neutral-dark' : 'bg-white'
+                        <span className={`absolute left-0 w-full h-[1.5px] transition-all duration-300 ${(isSolid || mobileOpen) ? 'bg-neutral-dark' : 'bg-white'
                             } ${mobileOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'}`} />
-                        <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[1.5px] transition-all duration-300 ${isSolid ? 'bg-neutral-dark' : 'bg-white'
+                        <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[1.5px] transition-all duration-300 ${(isSolid || mobileOpen) ? 'bg-neutral-dark' : 'bg-white'
                             } ${mobileOpen ? 'opacity-0' : ''}`} />
-                        <span className={`absolute left-0 w-full h-[1.5px] transition-all duration-300 ${isSolid ? 'bg-neutral-dark' : 'bg-white'
+                        <span className={`absolute left-0 w-full h-[1.5px] transition-all duration-300 ${(isSolid || mobileOpen) ? 'bg-neutral-dark' : 'bg-white'
                             } ${mobileOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'}`} />
                     </button>
-                    
-                    {/* Minimal Title/Label for Mobile Centering when Open (Optional) */}
-                    <div className="lg:hidden font-bold text-lg text-white">
-                        {!isSolid && !mobileOpen ? '' : ''}
-                    </div>
                 </div>
 
                 {/* Mobile dropdown */}
@@ -205,21 +212,46 @@ const Navbar: React.FC = () => {
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="lg:hidden overflow-hidden"
+                            className="lg:hidden overflow-hidden bg-white shadow-xl rounded-b-2xl border-t border-neutral-100"
                         >
-                            <div className="flex flex-col gap-4 pb-6 pt-2">
+                            <div className="flex flex-col gap-1 pb-6 pt-4 px-4 max-h-[80vh] overflow-y-auto">
                                 {navLinks.map((link) => (
-                                    <div key={link.label}>
-                                        <a
-                                            href={link.href}
-                                            onClick={() => !link.hasDropdown && setMobileOpen(false)}
-                                            className={`flex items-center justify-between text-lg font-semibold ${isSolid ? 'text-neutral-700' : 'text-white'
-                                                }`}
-                                        >
-                                            {link.label}
-                                            {link.hasDropdown && <ChevronDown className="w-5 h-5 opacity-50" />}
-                                        </a>
-                                        {/* Simplified mobile view without deeply nested dropdowns for immediate clarity */}
+                                    <div key={link.label} className="border-b border-neutral-50 last:border-none">
+                                        <div className="flex items-center justify-between py-4">
+                                            <a
+                                                href={link.href}
+                                                onClick={() => !link.hasDropdown && setMobileOpen(false)}
+                                                className="text-[17px] font-semibold text-neutral-800"
+                                            >
+                                                {link.label}
+                                            </a>
+                                            {link.hasDropdown && (
+                                                <button 
+                                                    className="p-2 -mr-2"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        // Toggle sub-items if we had state for it, 
+                                                        // but for now let's just make it a link.
+                                                    }}
+                                                >
+                                                    <ChevronDown className="w-5 h-5 opacity-40" />
+                                                </button>
+                                            )}
+                                        </div>
+                                        {link.hasDropdown && (
+                                            <div className="grid grid-cols-1 gap-2 pb-4 pl-4">
+                                                {link.subItems?.map((sub) => (
+                                                    <a 
+                                                        key={sub.label}
+                                                        href={sub.href}
+                                                        onClick={() => setMobileOpen(false)}
+                                                        className="text-sm text-neutral-500 py-1.5"
+                                                    >
+                                                        {sub.label}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                 ))}
                             </div>

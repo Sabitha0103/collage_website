@@ -161,6 +161,24 @@ const DepartmentPage: React.FC = () => {
                         </div>
                     </section>
 
+                    <div className="lg:hidden px-6 pt-6 -mb-4 overflow-x-auto no-scrollbar">
+                        <div className="flex gap-2 min-w-max pb-2">
+                            {sidebarItems.map((item) => (
+                                <button
+                                    key={item.key}
+                                    onClick={() => setActiveTab(item.key)}
+                                    className={`px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300 ${
+                                        activeTab === item.key 
+                                            ? 'bg-primary text-white shadow-lg shadow-primary/20' 
+                                            : 'bg-white text-neutral-600 border border-neutral-200'
+                                    }`}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
                     <div className="px-6 py-10">
                         {renderContent()}
                     </div>

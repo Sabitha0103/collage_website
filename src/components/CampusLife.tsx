@@ -75,8 +75,8 @@ const CampusLife: React.FC = () => {
                     </motion.div>
                 </div>
 
-                {/* Horizontal Accordion Gallery */}
-                <div className="flex h-[450px] md:h-[600px] lg:h-[700px] w-full gap-1 md:gap-2">
+                {/* Responsive Gallery (Vertical on Mobile, Horizontal Accordion on Desktop) */}
+                <div className="flex flex-col md:flex-row h-auto md:h-[600px] lg:h-[700px] w-full gap-2 md:gap-2">
                     {campusItems.map((item, index) => {
                         const isActive = activeIndex === index;
                         return (
@@ -84,8 +84,10 @@ const CampusLife: React.FC = () => {
                                 key={item.id}
                                 layout
                                 onClick={() => setActiveIndex(index)}
-                                className={`relative h-full rounded-sm overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                                    isActive ? 'flex-1 md:flex-[3]' : 'w-[25px] sm:w-[35px] md:w-[45px] lg:w-[60px]'
+                                className={`relative rounded-xl md:rounded-sm overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                                    isActive 
+                                        ? 'flex-[5] h-[350px] md:h-full md:flex-[3]' 
+                                        : 'h-[80px] md:h-full w-full md:w-[45px] lg:w-[60px]'
                                 }`}
                             >
                                 {/* Image background */}
@@ -110,17 +112,20 @@ const CampusLife: React.FC = () => {
 
                                 {/* Active View Content text */}
                                 <div className={`absolute inset-x-4 bottom-6 md:inset-x-8 md:bottom-10 z-10 transition-all duration-700 delay-150 flex flex-col justify-end ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none'}`}>
-                                    <h3 className="font-sans text-4xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-none mb-3 md:mb-5">
+                                    <h3 className="font-sans text-3xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-none mb-3 md:mb-5">
                                         {item.title}
                                     </h3>
-                                    <p className="text-white/80 text-xs md:text-sm lg:text-base max-w-sm md:max-w-xl font-sans leading-relaxed">
+                                    <p className="text-white/80 text-[10px] md:text-sm lg:text-base max-w-sm md:max-w-xl font-sans leading-relaxed">
                                         {item.subtitle}
                                     </p>
                                 </div>
 
-                                {/* Inactive Vertical Text */}
+                                {/* Inactive Text (Hidden on mobile if not active, or shown differently) */}
                                 <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-10 flex items-center justify-center transition-all duration-500 delay-100 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                                    <span style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }} className="font-sans text-xs md:text-sm lg:text-lg text-white/50 font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+                                    <span className="md:hidden font-sans text-[11px] text-white/70 font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+                                        {item.title.replace('_', ' ')}
+                                    </span>
+                                    <span style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }} className="hidden md:block font-sans text-xs md:text-sm lg:text-lg text-white/50 font-bold uppercase tracking-[0.2em] whitespace-nowrap">
                                         {item.title}
                                     </span>
                                 </div>
