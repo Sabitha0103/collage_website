@@ -25,6 +25,9 @@ html {
   scroll-behavior: smooth;
   font-size: 112.5%; /* Increases base rem from 16px to 18px globally */
   overflow-x: hidden;
+  zoom: 0.8; /* Scale entire site to ~80% to fix zoomed-in appearance on deployment */
+             /* zoom is now a standard CSS property supported in all modern browsers */
+             /* (Chrome, Safari, Edge always; Firefox 126+ / May 2024) */
 }
 
 @media (max-width: 768px) {
