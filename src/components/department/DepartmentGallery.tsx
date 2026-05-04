@@ -100,14 +100,14 @@ const DepartmentGallery: React.FC<DepartmentGalleryProps> = ({ dept }) => {
             <div>
                 <div className="flex items-center gap-3 mb-4">
                     <span className="w-8 h-[2px] rounded-full" style={{ background: '#F85E00' }} />
-                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: '#F85E00' }}>
+                    <span className="text-xs font-bold tracking-[0.3em] uppercase" style={{ color: '#F85E00' }}>
                         {dept.code} · Gallery
                     </span>
                 </div>
-                <h2 className="font-serif text-2xl lg:text-3xl font-bold mb-3" style={{ color: '#0A0903' }}>
+                <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#0A0903' }}>
                     Photo Gallery
                 </h2>
-                <p className="text-neutral-500 text-sm max-w-2xl leading-relaxed">
+                <p className="text-neutral-600 text-base max-w-2xl leading-relaxed">
                     A glimpse into the vibrant life of the {dept.name} department — events, student activities, clubs, and laboratories.
                 </p>
             </div>
@@ -118,7 +118,7 @@ const DepartmentGallery: React.FC<DepartmentGalleryProps> = ({ dept }) => {
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className="px-5 py-2 text-[13px] font-medium rounded-full transition-all duration-300 shrink-0"
+                        className="px-5 py-2.5 text-[15px] font-medium rounded-full transition-all duration-300 shrink-0"
                         style={{
                             background: activeCategory === cat ? '#F85E00' : 'white',
                             color: activeCategory === cat ? 'white' : '#0A0903',
@@ -141,7 +141,7 @@ const DepartmentGallery: React.FC<DepartmentGalleryProps> = ({ dept }) => {
                         {cat}
                     </button>
                 ))}
-                <span className="text-xs text-neutral-400 ml-2 shrink-0">
+                <span className="text-sm text-neutral-400 ml-2 shrink-0">
                     {filtered.length} photos
                 </span>
             </div>
@@ -175,7 +175,7 @@ const DepartmentGallery: React.FC<DepartmentGalleryProps> = ({ dept }) => {
                                     background: 'linear-gradient(to top, rgba(10, 9, 3, 0.85) 0%, transparent 60%)',
                                 }}
                             >
-                                <p className="text-white text-sm font-medium leading-snug">
+                                <p className="text-white text-base font-medium leading-snug">
                                     {img.caption}
                                 </p>
                                 <span
@@ -220,7 +220,7 @@ const DepartmentGallery: React.FC<DepartmentGalleryProps> = ({ dept }) => {
                                 className="absolute bottom-0 left-0 right-0 px-6 py-4"
                                 style={{ background: 'linear-gradient(to top, rgba(10, 9, 3, 0.9) 0%, transparent 100%)' }}
                             >
-                                <p className="text-white font-serif text-lg font-semibold">
+                                <p className="text-white font-serif text-xl font-semibold">
                                     {selectedImage.caption}
                                 </p>
                                 <span

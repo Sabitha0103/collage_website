@@ -342,12 +342,12 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
             <div className="text-center mb-8">
                 <div className="flex items-center justify-center gap-3 mb-4">
                     <span className="w-8 h-[2px] rounded-full" style={{ background: '#F85E00' }} />
-                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: '#F85E00' }}>
+                    <span className="text-xs font-bold tracking-[0.3em] uppercase" style={{ color: '#F85E00' }}>
                         {dept.code} · Academics
                     </span>
                     <span className="w-8 h-[2px] rounded-full" style={{ background: '#F85E00' }} />
                 </div>
-                <h2 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
+                <h2 className="font-serif text-3xl lg:text-4xl font-bold" style={{ color: '#0A0903' }}>
                     COURSE STRUCTURE
                 </h2>
             </div>
@@ -378,7 +378,7 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                 }}
                             >
                                 <h3
-                                    className="font-serif text-base lg:text-lg font-semibold"
+                                    className="font-serif text-lg lg:text-xl font-semibold"
                                     style={{ color: '#F85E00' }}
                                 >
                                     {section.title}
@@ -407,7 +407,7 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                     >
                                         {section.subtitle && (
                                             <div className="px-6 pt-4 pb-2 lg:px-8">
-                                                <p className="text-xs text-neutral-400">
+                                                <p className="text-sm text-neutral-400">
                                                     {section.subtitle}
                                                 </p>
                                             </div>
@@ -419,7 +419,7 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                                 <thead>
                                                     <tr>
                                                         <th
-                                                            className="px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider"
+                                                            className="px-3 py-3 text-[13px] font-bold uppercase tracking-wider"
                                                             style={{
                                                                 background: '#F85E00',
                                                                 color: 'white',
@@ -429,11 +429,11 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                                             Description
                                                         </th>
                                                         <th
-                                                            className="px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider text-center"
+                                                            className="px-3 py-3 text-[13px] font-bold uppercase tracking-wider text-center"
                                                             style={{
                                                                 background: '#F85E00',
                                                                 color: 'white',
-                                                                width: '180px',
+                                                                width: '200px',
                                                             }}
                                                         >
                                                             View/Download
@@ -456,7 +456,7 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                                                 e.currentTarget.style.background = di % 2 === 0 ? 'rgba(255, 250, 243, 0.5)' : 'white';
                                                             }}
                                                         >
-                                                            <td className="px-3 py-3 text-[13px] text-neutral-700">
+                                                            <td className="px-3 py-3 text-[15px] text-neutral-700">
                                                                 {doc.description}
                                                             </td>
                                                             <td className="px-3 py-3 text-center">
@@ -464,7 +464,7 @@ const DepartmentCourseStructure: React.FC<DepartmentCourseStructureProps> = ({ d
                                                                     href={doc.link}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="inline-flex items-center gap-1.5 text-[13px] font-medium transition-colors duration-200"
+                                                                    className="inline-flex items-center gap-1.5 text-[15px] font-medium transition-colors duration-200"
                                                                     style={{ color: '#F85E00' }}
                                                                     onMouseEnter={(e) => {
                                                                         e.currentTarget.style.color = '#FFB563';

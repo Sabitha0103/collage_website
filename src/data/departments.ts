@@ -81,7 +81,7 @@ export const departments: DepartmentData[] = [
             name: 'Dr. K. Subba Rao',
             designation: 'Head of the Department, CSE',
             message: 'The Department of Computer Science & Engineering at SRIT is committed to providing an environment that fosters academic excellence and innovation. We focus on developing competent professionals who can contribute meaningfully to the society through technology. Our faculty members are dedicated to nurturing talent and guiding students towards successful careers in the ever-evolving field of computer science.',
-            image: '/csmhod.jpg',
+            image: '',
         },
     },
     {

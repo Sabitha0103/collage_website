@@ -29,18 +29,51 @@ const LeadershipVision: React.FC = () => {
                 {/* Fanned Cards Showcase */}
                 <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0 md:-space-x-12 lg:-space-x-20">
                     
-                    {/* Chairman Card (Left) */}
+                    {/* Dr. Ranjit Card (Far Left) */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50, y: 50, rotate: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: -12 } : {}}
+                        initial={{ opacity: 0, x: -50, y: 50, rotate: -30 }}
+                        animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: -20 } : {}}
                         whileHover={{ 
                             rotate: 0, 
                             scale: 1.05, 
-                            zIndex: 40,
+                            zIndex: 50,
                             y: -20
                         }}
                         transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-10"
+                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-0"
+                    >
+                        <img
+                            src="/ranjit.jpg"
+                            alt="Dr. Ranjit"
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 className="font-serif text-3xl font-bold text-white mb-2 leading-tight">
+                                Dr. Ranjit
+                            </h3>
+                            <p className="text-[#ea580c] font-bold text-sm tracking-widest uppercase mb-4">
+                                TRAINING & PLACEMENT OFFICER
+                            </p>
+                            <div className="h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 transition-all duration-500 opacity-0 group-hover:opacity-100">
+                                <p className="text-gray-200 italic text-[15px] leading-relaxed border-l-4 border-[#ea580c] pl-4">
+                                    "Dedicated to bridging the gap between academia and industry to ensure successful and fulfilling careers for every student."
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Chairman Card (Center Left) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30, y: 50, rotate: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: -8 } : {}}
+                        whileHover={{ 
+                            rotate: 0, 
+                            scale: 1.05, 
+                            zIndex: 50,
+                            y: -20
+                        }}
+                        transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.1 }}
+                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-10 md:mt-4"
                     >
                         <img
                             src="/sambasir.jpg"
@@ -62,17 +95,18 @@ const LeadershipVision: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Mrs. Padmavathi Card (Middle) */}
+                    {/* Mrs. Padmavathi Card (Center Right) */}
                     <motion.div
-                        initial={{ opacity: 0, y: 50, rotate: 0 }}
-                        animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : {}}
+                        initial={{ opacity: 0, y: 50, rotate: 10 }}
+                        animate={isInView ? { opacity: 1, y: 0, rotate: 8 } : {}}
                         whileHover={{ 
+                            rotate: 0,
                             scale: 1.05, 
-                            zIndex: 40,
+                            zIndex: 50,
                             y: -20
                         }}
-                        transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.1 }}
-                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-20 md:mt-8"
+                        transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.2 }}
+                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-20 md:mt-12"
                     >
                         <img
                             src="/padmavathi.jpg"
@@ -94,18 +128,18 @@ const LeadershipVision: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Principal Card (Right) */}
+                    {/* Principal Card (Far Right) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50, y: 50, rotate: 20 }}
-                        animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: 12 } : {}}
+                        initial={{ opacity: 0, x: 50, y: 50, rotate: 30 }}
+                        animate={isInView ? { opacity: 1, x: 0, y: 0, rotate: 20 } : {}}
                         whileHover={{ 
                             rotate: 0, 
                             scale: 1.05, 
-                            zIndex: 40,
+                            zIndex: 50,
                             y: -20
                         }}
-                        transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.2 }}
-                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-30 md:mt-16"
+                        transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.3 }}
+                        className="relative w-full max-w-[340px] lg:max-w-[380px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer group z-30 md:mt-20"
                     >
                         <img
                             src="/principal.jpg"

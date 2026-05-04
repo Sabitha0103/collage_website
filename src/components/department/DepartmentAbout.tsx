@@ -17,7 +17,7 @@ const fadeUp = {
 
 const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
     return (
-        <div className="space-y-16">
+        <div className="space-y-8">
             {/* ── About Title Section ──────────────────────────── */}
             <motion.section
                 custom={0}
@@ -45,14 +45,14 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-4">
                             <span className="w-8 h-[2px] rounded-full" style={{ background: 'rgba(255, 255, 255, 0.5)' }} />
-                            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/70">
+                            <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/70">
                                 About
                             </span>
                         </div>
-                        <h2 className="font-serif text-2xl lg:text-3xl font-bold text-white leading-tight">
+                        <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white leading-tight">
                             About the Department
                         </h2>
-                        <p className="text-white/75 text-sm mt-4 max-w-2xl leading-relaxed">
+                        <p className="text-white/80 text-base mt-4 max-w-2xl leading-relaxed">
                             {dept.description[0]}
                         </p>
                     </div>
@@ -67,7 +67,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 variants={fadeUp}
             >
                 <div className="flex items-center gap-4 mb-6">
-                    <h3 className="font-serif text-xl lg:text-2xl font-bold" style={{ color: '#0A0903' }}>
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
                         Vision
                     </h3>
                     <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #0A0903 0%, transparent 100%)' }} />
@@ -90,7 +90,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                                 <path d="M12 16v-4M12 8h.01" />
                             </svg>
                         </div>
-                        <p className="text-[15px] leading-[1.85] text-neutral-700">
+                        <p className="text-[16px] lg:text-lg leading-[1.85] text-neutral-800">
                             {dept.vision}
                         </p>
                     </div>
@@ -105,13 +105,13 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 variants={fadeUp}
             >
                 <div className="flex items-center gap-4 mb-8">
-                    <h3 className="font-serif text-xl lg:text-2xl font-bold" style={{ color: '#0A0903' }}>
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
                         Mission
                     </h3>
                     <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #0A0903 0%, transparent 100%)' }} />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-3">
                     {dept.mission.map((item, index) => (
                         <motion.div
                             key={item.id}
@@ -136,17 +136,10 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                                 e.currentTarget.style.borderColor = 'rgba(248, 94, 0, 0.06)';
                             }}
                         >
-                            {/* Top accent bar */}
-                            <div
-                                className="h-1"
-                                style={{
-                                    background: `linear-gradient(90deg, #F85E00 ${(index + 1) * 25}%, #FFD29D 100%)`,
-                                }}
-                            />
-                            <div className="px-6 py-6 lg:px-7 lg:py-7">
+                            <div className="px-5 py-4 lg:px-6 lg:py-5">
                                 <div className="flex items-start gap-4">
                                     <span
-                                        className="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold"
+                                        className="shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-[14px] font-bold"
                                         style={{
                                             background: 'linear-gradient(135deg, #FFD29D 0%, #FFB563 100%)',
                                             color: '#F85E00',
@@ -155,7 +148,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                                     >
                                         {item.id}
                                     </span>
-                                    <p className="text-[14px] leading-[1.8] text-neutral-600 pt-1.5">
+                                    <p className="text-[18px] leading-[1.6] text-neutral-900 pt-0.5">
                                         {item.text}
                                     </p>
                                 </div>
@@ -173,7 +166,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 variants={fadeUp}
             >
                 <div className="flex items-center gap-4 mb-6">
-                    <h3 className="font-serif text-xl lg:text-2xl font-bold" style={{ color: '#0A0903' }}>
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
                         Goals
                     </h3>
                     <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #F85E00 0%, transparent 100%)' }} />
@@ -191,7 +184,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                         style={{ background: 'linear-gradient(180deg, #F85E00 0%, #FFD29D 100%)' }}
                     />
                     <div className="pl-4">
-                        <p className="text-[15px] leading-[1.85] text-neutral-700">
+                        <p className="text-[16px] lg:text-lg leading-[1.85] text-neutral-800">
                             {dept.goals}
                         </p>
                     </div>
@@ -206,7 +199,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 variants={fadeUp}
             >
                 <div className="flex items-center gap-4 mb-8">
-                    <h3 className="font-serif text-xl lg:text-2xl font-bold" style={{ color: '#0A0903' }}>
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
                         Message from HOD
                     </h3>
                     <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #F85E00 0%, transparent 100%)' }} />
@@ -222,36 +215,38 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 >
                     <div className="flex flex-col md:flex-row">
                         {/* HOD Photo */}
-                        <div className="md:w-[220px] lg:w-[260px] shrink-0 relative overflow-hidden">
-                            <img
-                                src={dept.hodMessage.image}
-                                alt={dept.hodMessage.name}
-                                className="w-full h-full object-cover"
-                                style={{ minHeight: '260px' }}
-                            />
-                            <div
-                                className="absolute inset-0"
-                                style={{
-                                    background: 'linear-gradient(to top, rgba(10, 9, 3, 0.6) 0%, transparent 50%)',
-                                }}
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 p-5 md:hidden">
-                                <h4 className="font-serif text-lg font-semibold text-white">
-                                    {dept.hodMessage.name}
-                                </h4>
-                                <p className="text-white/60 text-xs mt-0.5">
-                                    {dept.hodMessage.designation}
-                                </p>
+                        {dept.hodMessage.image && (
+                            <div className="md:w-[220px] lg:w-[260px] shrink-0 relative overflow-hidden">
+                                <img
+                                    src={dept.hodMessage.image}
+                                    alt={dept.hodMessage.name}
+                                    className="w-full h-full object-cover"
+                                    style={{ minHeight: '260px' }}
+                                />
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        background: 'linear-gradient(to top, rgba(10, 9, 3, 0.6) 0%, transparent 50%)',
+                                    }}
+                                />
+                                <div className="absolute bottom-0 left-0 right-0 p-5 md:hidden">
+                                    <h4 className="font-serif text-xl font-semibold text-white">
+                                        {dept.hodMessage.name}
+                                    </h4>
+                                    <p className="text-white/80 text-sm mt-0.5">
+                                        {dept.hodMessage.designation}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {/* HOD Content */}
                         <div className="flex-1 px-8 py-8 lg:px-10 lg:py-10 flex flex-col justify-center">
-                            <div className="hidden md:block mb-5">
-                                <h4 className="font-serif text-xl font-semibold" style={{ color: '#0A0903' }}>
+                            <div className={`${dept.hodMessage.image ? 'hidden md:block' : 'block'} mb-5`}>
+                                <h4 className="font-serif text-2xl font-semibold" style={{ color: '#0A0903' }}>
                                     {dept.hodMessage.name}
                                 </h4>
-                                <p className="text-sm mt-1" style={{ color: '#F85E00' }}>
+                                <p className="text-base mt-1 font-medium" style={{ color: '#F85E00' }}>
                                     {dept.hodMessage.designation}
                                 </p>
                             </div>
@@ -263,14 +258,14 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                                 </svg>
                             </div>
 
-                            <p className="text-[14.5px] leading-[1.85] text-neutral-600 italic">
+                            <p className="text-[16px] lg:text-[17px] leading-[1.85] text-neutral-700 italic">
                                 {dept.hodMessage.message}
                             </p>
 
                             {/* Signature accent */}
                             <div className="flex items-center gap-3 mt-6 pt-5" style={{ borderTop: '1px solid rgba(248, 94, 0, 0.06)' }}>
                                 <span className="w-8 h-[2px] rounded-full" style={{ background: '#F85E00' }} />
-                                <span className="text-xs font-semibold" style={{ color: '#F85E00' }}>
+                                <span className="text-sm font-semibold" style={{ color: '#F85E00' }}>
                                     {dept.hodMessage.name}
                                 </span>
                             </div>
@@ -287,7 +282,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 variants={fadeUp}
             >
                 <div className="flex items-center gap-4 mb-6">
-                    <h3 className="font-serif text-xl lg:text-2xl font-bold" style={{ color: '#0A0903' }}>
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
                         Research Areas
                     </h3>
                     <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #F85E00 0%, transparent 100%)' }} />
@@ -297,7 +292,7 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                     {dept.researchAreas.map((area, i) => (
                         <span
                             key={i}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-default"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-base font-medium transition-all duration-300 cursor-default"
                             style={{
                                 background: 'white',
                                 color: '#0A0903',

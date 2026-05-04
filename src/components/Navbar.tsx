@@ -139,7 +139,7 @@ const NavItem = ({ link, isSolid }: { link: NavLink, isSolid: boolean }) => {
                                 <a 
                                     key={idx} 
                                     href={sub.href}
-                                    className="block px-5 py-2.5 text-[14px] text-neutral-600 hover:text-primary hover:bg-orange-50/50 transition-colors"
+                                    className="block px-5 py-3 text-[16px] font-medium text-neutral-700 hover:text-primary hover:bg-orange-50/50 transition-colors"
                                 >
                                     {sub.label}
                                 </a>
@@ -245,7 +245,7 @@ const Navbar: React.FC = () => {
                                                         key={sub.label}
                                                         href={sub.href}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className="text-sm text-neutral-500 py-1.5"
+                                                        className="text-[16px] font-medium text-neutral-600 py-2"
                                                     >
                                                         {sub.label}
                                                     </a>

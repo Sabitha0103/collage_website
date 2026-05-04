@@ -14,6 +14,7 @@ import GlobalTieUps from '../components/GlobalTieUps';
 import LeadershipVision from '../components/LeadershipVision';
 import SocialMediaFeeds from '../components/SocialMediaFeeds';
 import CSRActivities from '../components/CSRActivities';
+import StudentAchievements from '../components/StudentAchievements';
 
 const HomePage: React.FC = () => {
     return (
@@ -30,6 +31,7 @@ const HomePage: React.FC = () => {
                 <CampusLife />
                 <Placements />
                 <AlumniSuccess />
+                <StudentAchievements />
                 <UpcomingEvents />
                 <CSRActivities />
                 <SocialMediaFeeds />

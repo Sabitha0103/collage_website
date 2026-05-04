@@ -6,12 +6,13 @@ const About: React.FC = () => {
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     return (
-        <section id="about" ref={ref} className="section-y-lg bg-white relative overflow-hidden">
+        <section id="about" ref={ref} className="min-h-screen flex items-center bg-white relative overflow-hidden py-16 lg:py-4">
 
-            <div className="section-container relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="section-container relative z-10 max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     {/* Left — text */}
                     <motion.div
+                        className="lg:col-span-6 pr-0 lg:pr-12"
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.8 }}
@@ -19,30 +20,25 @@ const About: React.FC = () => {
                         {/* Accent bar */}
                         <div className="w-20 h-[3px] bg-primary mb-5" />
 
-                        <p className="label-caps text-primary tracking-[0.25em] mb-5">
+                        <p className="label-caps text-primary text-sm lg:text-base font-bold tracking-[0.25em] mb-5">
                             About SRIT
                         </p>
 
-                        <h2 className="heading-lg text-neutral-dark mb-8">
+                        <h2 className="heading-lg text-neutral-dark text-4xl lg:text-5xl font-black mb-8">
                             Inspired by the Legacy of
                             <br />
                             Srinivasa Ramanujan
                         </h2>
 
-                        <div className="space-y-5 text-neutral-600 leading-[1.8] text-[15px] max-w-lg">
+                        <div className="space-y-6 text-neutral-600 leading-[1.8] text-base lg:text-lg">
                             <p>
-                                Srinivasa Ramanujan Institute of Technology was established in November 2007
-                                under the Smt. Aluru Narayanamma Memorial Educational Society,
-                                founded by Founder-cum-Secretary Sri Aluru Sambasiva Reddy — driven by the belief that
+                                This Society was established by Founder-cum-Secretary Sri Aluru Sambasiva Reddy in November 2007 in memory of his mother, Late Smt. Aluru Narayanamma, to give shape to his firm belief that
                             </p>
-                            <blockquote className="border-l-2 border-primary/30 pl-5 italic text-neutral-700">
-                                "Education is a Key Enabler for Progress."
+                            <blockquote className="border-l-4 border-primary/40 pl-6 italic text-neutral-800 font-medium text-lg lg:text-xl">
+                                "EDUCATION IS A KEY ENABLER FOR PROGRESS."
                             </blockquote>
                             <p>
-                                Located in Ananthapuramu, Andhra Pradesh, SRIT is permanently
-                                affiliated to JNTU Ananthapuramu and approved by AICTE New Delhi.
-                                The institute offers 7 undergraduate engineering programs and has
-                                built an enviable record of producing industry-ready graduates.
+                                This belief has shaped his entire life – he himself excelled in his scholastic years and then became a tutor, teaching students not only his subject but also imparting higher human values. As his career progressed, he wanted to ensure that maximum students from rural and developing areas could derive benefit from this credo.
                             </p>
                         </div>
 
@@ -66,27 +62,51 @@ const About: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right — certificate grid */}
+                    {/* Right — certificate scrolling column */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : {}}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="grid grid-cols-2 gap-4"
+                        className="lg:col-span-6 relative mt-12 lg:mt-0"
                     >
-                        {[
-                            { src: '/cert-iic.jpg', alt: 'IIC Certificate' },
-                            { src: '/cert-salesforce.jpg', alt: 'Salesforce Award' },
-                            { src: '/cert-eduskills.jpg', alt: 'EduSkills Certificate' },
-                            { src: '/cert-nptel.jpg', alt: 'NPTEL Certificate' }
-                        ].map((img, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg shadow-md border border-neutral-100 bg-white">
-                                <img
-                                    src={img.src}
-                                    alt={img.alt}
-                                    className="w-full h-48 lg:h-64 object-contain hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                        ))}
+                        {/* Gradient Fade Overlays */}
+                        <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
+
+                        {/* Scrolling Container */}
+                        <div className="flex flex-col gap-10 h-[500px] lg:h-[650px] overflow-y-auto px-4 py-8 custom-scrollbar">
+                            {[
+                                { src: '/cert-iic.jpg', alt: 'IIC Certificate' },
+                                { src: '/cert-salesforce.jpg', alt: 'Salesforce Award' },
+                                { src: '/cert-eduskills.jpg', alt: 'EduSkills Certificate' },
+                                { src: '/cert-nptel.jpg', alt: 'NPTEL Certificate' }
+                            ].map((img, index) => (
+                                <motion.div 
+                                    key={index} 
+                                    className="relative overflow-hidden rounded-2xl shadow-xl border border-neutral-100 bg-white group h-80 md:h-[400px] lg:h-[450px] w-full flex-shrink-0 cursor-pointer"
+                                    whileHover={{ 
+                                        scale: 1.05, 
+                                        zIndex: 50,
+                                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                                        transition: { duration: 0.3 }
+                                    }}
+                                >
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        className="absolute inset-0 w-full h-full object-contain p-1 lg:p-2"
+                                    />
+                                </motion.div>
+                            ))}
+                        </div>
+                        
+                        {/* Scroll Indicator */}
+                        <div className="absolute right-2 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-2 opacity-50 pointer-events-none">
+                            <span className="w-1 h-1 rounded-full bg-neutral-400"></span>
+                            <span className="w-1 h-1 rounded-full bg-neutral-400"></span>
+                            <span className="w-1 h-2 rounded-full bg-neutral-500"></span>
+                            <span className="text-[10px] uppercase tracking-widest font-bold text-neutral-400 rotate-90 mt-6 whitespace-nowrap">Scroll</span>
+                        </div>
                     </motion.div>
                 </div>
             </div>

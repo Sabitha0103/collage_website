@@ -25,7 +25,7 @@ const DepartmentPage: React.FC = () => {
         return (
             <div className="min-h-screen flex items-center justify-center" style={{ background: '#FFFAF3' }}>
                 <div className="text-center">
-                    <h1 className="font-serif text-4xl font-semibold mb-4" style={{ color: '#0A0903' }}>
+                    <h1 className="font-serif text-5xl font-semibold mb-4" style={{ color: '#0A0903' }}>
                         Department Not Found
                     </h1>
                     <Link to="/" className="font-semibold" style={{ color: '#F85E00' }}>
@@ -67,15 +67,15 @@ const DepartmentPage: React.FC = () => {
                 <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
                     <div className="flex items-center justify-between h-[68px]">
                         <div className="flex items-center gap-4">
-                            <Link to="/" className="font-serif text-xl font-bold" style={{ color: '#F85E00' }}>
+                            <Link to="/" className="font-serif text-2xl font-bold" style={{ color: '#F85E00' }}>
                                 SRIT
                             </Link>
                             <span className="hidden sm:block w-px h-6" style={{ background: 'rgba(10,9,3,0.12)' }} />
-                            <span className="hidden sm:block text-xs uppercase" style={{ color: '#0A0903', opacity: 0.5 }}>
+                            <span className="hidden sm:block text-sm uppercase" style={{ color: '#0A0903', opacity: 0.5 }}>
                                 {dept.code} Department
                             </span>
                         </div>
-                        <Link to="/departments" className="hidden sm:flex text-sm font-medium" style={{ color: '#F85E00' }}>
+                        <Link to="/departments" className="hidden sm:flex text-base font-medium" style={{ color: '#F85E00' }}>
                             ← All Departments
                         </Link>
                     </div>
@@ -90,14 +90,14 @@ const DepartmentPage: React.FC = () => {
                 >
                     <div className="px-6 pt-8 pb-6">
                         <div
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase"
                             style={{ background: 'rgba(248,94,0,0.15)', color: '#0A0903' }}
                         >
                             <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#F85E00' }} />
                             {dept.code}
                         </div>
 
-                        <h2 className="font-serif text-lg font-semibold mt-4" style={{ color: '#0A0903' }}>
+                        <h2 className="font-serif text-xl font-semibold mt-4" style={{ color: '#0A0903' }}>
                             {dept.name}
                         </h2>
                     </div>
@@ -105,7 +105,7 @@ const DepartmentPage: React.FC = () => {
                     <div className="mx-6 mb-4" style={{ borderTop: '1px solid rgba(10,9,3,0.1)' }} />
 
                     <nav className="px-4 flex-1">
-                        <p className="px-3 text-[10px] uppercase mb-4" style={{ color: 'rgba(10,9,3,0.5)' }}>
+                        <p className="px-3 text-xs uppercase mb-4" style={{ color: 'rgba(10,9,3,0.5)' }}>
                             Menu
                         </p>
 
@@ -120,7 +120,7 @@ const DepartmentPage: React.FC = () => {
                                     fontWeight: activeTab === item.key ? 600 : 400,
                                 }}
                             >
-                                <span className="text-[13px]">{item.label}</span>
+                                <span className="text-[15px]">{item.label}</span>
                             </button>
                         ))}
                     </nav>
@@ -129,20 +129,20 @@ const DepartmentPage: React.FC = () => {
                     <div className="px-6 py-6 mt-auto" style={{ borderTop: '1px solid rgba(10,9,3,0.1)' }}>
                         <div className="grid grid-cols-2 gap-3">
                             <div className="rounded-lg p-3" style={{ background: 'rgba(248,94,0,0.08)' }}>
-                                <p className="text-[10px] uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Faculty</p>
-                                <p className="text-sm font-semibold" style={{ color: '#F85E00' }}>{dept.stats.faculty}</p>
+                                <p className="text-xs uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Faculty</p>
+                                <p className="text-base font-semibold" style={{ color: '#F85E00' }}>{dept.stats.faculty}</p>
                             </div>
                             <div className="rounded-lg p-3" style={{ background: 'rgba(248,94,0,0.08)' }}>
-                                <p className="text-[10px] uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Labs</p>
-                                <p className="text-sm font-semibold" style={{ color: '#F85E00' }}>{dept.stats.labs}</p>
+                                <p className="text-xs uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Labs</p>
+                                <p className="text-base font-semibold" style={{ color: '#F85E00' }}>{dept.stats.labs}</p>
                             </div>
                             <div className="rounded-lg p-3" style={{ background: 'rgba(248,94,0,0.08)' }}>
-                                <p className="text-[10px] uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Students</p>
-                                <p className="text-sm font-semibold" style={{ color: '#F85E00' }}>{dept.stats.students}</p>
+                                <p className="text-xs uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Students</p>
+                                <p className="text-base font-semibold" style={{ color: '#F85E00' }}>{dept.stats.students}</p>
                             </div>
                             <div className="rounded-lg p-3" style={{ background: 'rgba(248,94,0,0.08)' }}>
-                                <p className="text-[10px] uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Placement</p>
-                                <p className="text-sm font-semibold" style={{ color: '#F85E00' }}>{dept.stats.placement}</p>
+                                <p className="text-xs uppercase mb-1" style={{ color: 'rgba(10,9,3,0.6)' }}>Placement</p>
+                                <p className="text-base font-semibold" style={{ color: '#F85E00' }}>{dept.stats.placement}</p>
                             </div>
                         </div>
                     </div>
@@ -156,8 +156,8 @@ const DepartmentPage: React.FC = () => {
                             <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,9,3,0.7), rgba(10,9,3,0.5))' }} />
                         </div>
                         <div className="relative z-10 px-8 py-16">
-                            <h1 className="font-serif text-3xl font-bold text-white">{dept.fullName}</h1>
-                            <p className="text-white/60 text-sm mt-4">{dept.tagline}</p>
+                            <h1 className="font-serif text-4xl font-bold text-white">{dept.fullName}</h1>
+                            <p className="text-white/60 text-base mt-4">{dept.tagline}</p>
                         </div>
                     </section>
 
@@ -167,7 +167,7 @@ const DepartmentPage: React.FC = () => {
                                 <button
                                     key={item.key}
                                     onClick={() => setActiveTab(item.key)}
-                                    className={`px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300 ${
+                                    className={`px-5 py-2.5 rounded-full text-[15px] font-semibold transition-all duration-300 ${
                                         activeTab === item.key 
                                             ? 'bg-primary text-white shadow-lg shadow-primary/20' 
                                             : 'bg-white text-neutral-600 border border-neutral-200'

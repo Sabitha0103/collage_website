@@ -36,10 +36,10 @@ const DepartmentFaculty: React.FC<DepartmentFacultyProps> = ({ dept }) => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="mb-12">
-                <h2 className="font-serif text-3xl font-semibold text-neutral-dark mb-4">
+                <h2 className="font-serif text-4xl font-semibold text-neutral-dark mb-4">
                     Our Faculty
                 </h2>
-                <p className="text-neutral-600 max-w-2xl leading-relaxed">
+                <p className="text-neutral-700 text-lg max-w-2xl leading-relaxed">
                     The {dept.code} department is proud to be home to {dept.stats.faculty} highly qualified faculty members dedicated to academic excellence, research, and mentoring the next generation of engineers.
                 </p>
             </div>
@@ -54,13 +54,13 @@ const DepartmentFaculty: React.FC<DepartmentFacultyProps> = ({ dept }) => {
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </div>
-                        <h3 className="font-serif text-lg font-medium text-neutral-dark mb-1">
+                        <h3 className="font-serif text-xl font-semibold text-neutral-dark mb-1">
                             {faculty.name}
                         </h3>
-                        <p className="text-primary text-sm font-medium mb-1">
+                        <p className="text-primary text-base font-medium mb-1">
                             {faculty.designation}
                         </p>
-                        <p className="text-neutral-500 text-xs leading-relaxed">
+                        <p className="text-neutral-600 text-sm leading-relaxed">
                             {faculty.specialization}
                         </p>
                     </div>

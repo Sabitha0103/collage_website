@@ -230,7 +230,7 @@ const DepartmentStudents: React.FC = () => {
                             }}
                         >
                             <h3
-                                className="font-serif text-base lg:text-lg font-semibold"
+                                className="font-serif text-lg lg:text-xl font-semibold"
                                 style={{ color: '#F85E00' }}
                             >
                                 {section.title}
@@ -258,7 +258,7 @@ const DepartmentStudents: React.FC = () => {
                                     style={{ background: 'white' }}
                                 >
                                     <div className="px-6 pt-4 pb-2 lg:px-8">
-                                        <p className="text-xs text-neutral-400 mb-4">
+                                        <p className="text-sm text-neutral-400 mb-4">
                                             {section.subtitle}
                                         </p>
                                     </div>
@@ -271,7 +271,7 @@ const DepartmentStudents: React.FC = () => {
                                                     {section.columns.map((col, ci) => (
                                                         <th
                                                             key={ci}
-                                                            className="px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap"
+                                                            className="px-3 py-3 text-[13px] font-bold uppercase tracking-wider whitespace-nowrap"
                                                             style={{
                                                                 background: '#F85E00',
                                                                 color: 'white',
@@ -314,7 +314,7 @@ const DepartmentStudents: React.FC = () => {
                                                                 {values.map((val, vi) => (
                                                                     <td
                                                                         key={vi}
-                                                                        className="px-3 py-2.5 text-[13px] text-neutral-700 whitespace-nowrap"
+                                                                        className="px-3 py-3 text-[15px] text-neutral-700 whitespace-nowrap"
                                                                         style={{
                                                                             borderRight: vi < values.length - 1 ? '1px solid rgba(248, 94, 0, 0.04)' : 'none',
                                                                         }}
@@ -336,7 +336,7 @@ const DepartmentStudents: React.FC = () => {
                                             <button
                                                 key={year}
                                                 onClick={() => setYearForSection(section.key, year)}
-                                                className="px-4 py-1.5 text-[12px] font-medium rounded-md transition-all duration-200 shrink-0"
+                                                className="px-4 py-2 text-[14px] font-medium rounded-md transition-all duration-200 shrink-0"
                                                 style={{
                                                     background: currentYear === year ? '#F85E00' : 'transparent',
                                                     color: currentYear === year ? 'white' : '#0A0903',
