@@ -59,7 +59,89 @@ const DepartmentAbout: React.FC<DepartmentAboutProps> = ({ dept }) => {
                 </div>
             </motion.section>
 
-            {/* ── Vision ───────────────────────────────────────── */}
+            {/* ── Programme Overview ───────────────────────────── */}
+            <motion.section
+                custom={0.5}
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+            >
+                <div className="flex items-center gap-4 mb-6">
+                    <h3 className="font-serif text-2xl lg:text-3xl font-bold" style={{ color: '#0A0903' }}>
+                        Programme Overview
+                    </h3>
+                    <span className="flex-1 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #0A0903 0%, transparent 100%)' }} />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Eligibility */}
+                    <div
+                        className="rounded-2xl px-6 py-6"
+                        style={{
+                            background: 'white',
+                            border: '1px solid rgba(248, 94, 0, 0.08)',
+                            boxShadow: '0 2px 12px rgba(248, 94, 0, 0.04)',
+                        }}
+                    >
+                        <div className="flex items-center gap-3 mb-3">
+                            <div
+                                className="flex items-center justify-center w-9 h-9 rounded-lg shrink-0"
+                                style={{ background: 'linear-gradient(135deg, #FFD29D 0%, #FFB563 100%)' }}
+                            >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F85E00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <h4 className="font-serif text-lg font-semibold" style={{ color: '#0A0903' }}>Eligibility</h4>
+                        </div>
+                        <p className="text-neutral-700 text-sm leading-relaxed">{dept.eligibility}</p>
+                    </div>
+                    {/* Intake & Accreditation */}
+                    <div
+                        className="rounded-2xl px-6 py-6"
+                        style={{
+                            background: 'white',
+                            border: '1px solid rgba(248, 94, 0, 0.08)',
+                            boxShadow: '0 2px 12px rgba(248, 94, 0, 0.04)',
+                        }}
+                    >
+                        <div className="flex items-center gap-3 mb-3">
+                            <div
+                                className="flex items-center justify-center w-9 h-9 rounded-lg shrink-0"
+                                style={{ background: 'linear-gradient(135deg, #FFD29D 0%, #FFB563 100%)' }}
+                            >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F85E00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                </svg>
+                            </div>
+                            <h4 className="font-serif text-lg font-semibold" style={{ color: '#0A0903' }}>Intake & Accreditation</h4>
+                        </div>
+                        <ul className="text-neutral-700 text-sm leading-relaxed space-y-1">
+                            <li><span className="font-medium">Intake:</span> {dept.intake} seats per year</li>
+                            <li><span className="font-medium">Duration:</span> 4 Years (8 Semesters)</li>
+                            <li><span className="font-medium">Affiliation:</span> JNTU Anantapur</li>
+                            <li><span className="font-medium">Accreditation:</span> {dept.accreditation}</li>
+                        </ul>
+                    </div>
+                </div>
+                {/* Description paragraphs beyond the first — the first paragraph is shown in the About banner above */}
+                {dept.description.slice(1).map((para, i) => (
+                    <p key={i} className="text-neutral-700 text-base leading-relaxed mt-4">
+                        {para}
+                    </p>
+                ))}
+                {/* Highlights */}
+                {dept.highlights.length > 0 && (
+                    <ul className="mt-6 space-y-2">
+                        {dept.highlights.map((h, i) => (
+                            <li key={i} className="flex items-start gap-2 text-neutral-700 text-sm">
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F85E00' }} />
+                                {h}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </motion.section>
+
             <motion.section
                 custom={1}
                 initial="hidden"
