@@ -162,7 +162,7 @@ const DepartmentCSVUpload: React.FC<DepartmentCSVUploadProps> = ({ dept, section
                     ) : (
                         filteredRows.map((row, rowIndex) => (
                             <div
-                                key={`${csvState.fileName}-${row.department}-${rowIndex}`}
+                                key={`dept-row-${rowIndex}`}
                                 className="rounded-xl border border-neutral-200 bg-warm-50 p-4"
                             >
                                 <p className="text-xs font-bold uppercase tracking-[0.15em] mb-3" style={{ color: '#F85E00' }}>
