@@ -6,7 +6,7 @@ import type { DepartmentData } from '../../data/departments';
 
 interface DepartmentCSVUploadProps {
     dept: DepartmentData;
-    sectionLabel: 'Programs' | 'Students';
+    sectionLabel: 'Program' | 'Students';
 }
 
 function formatLabel(key: string): string {
@@ -159,8 +159,11 @@ const DepartmentCSVUpload: React.FC<DepartmentCSVUploadProps> = ({ dept, section
                             No additional columns found for this department.
                         </p>
                     ) : (
-                        filteredRows.map((row, index) => (
-                            <div key={`${row.department}-${index}`} className="rounded-xl border border-neutral-200 bg-warm-50 p-4">
+                        filteredRows.map((row) => (
+                            <div
+                                key={`${row.department}-${columns.map(column => row[column] ?? '').join('|')}`}
+                                className="rounded-xl border border-neutral-200 bg-warm-50 p-4"
+                            >
                                 <p className="text-xs font-bold uppercase tracking-[0.15em] mb-3" style={{ color: '#F85E00' }}>
                                     {row.department}
                                 </p>

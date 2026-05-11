@@ -189,7 +189,7 @@ const sections: SectionData[] = [
 
 interface DepartmentStudentsProps {
     dept: DepartmentData;
-    sectionLabel: 'Programs' | 'Students';
+    sectionLabel: 'Program' | 'Students';
 }
 
 const DepartmentStudents: React.FC<DepartmentStudentsProps> = ({ dept, sectionLabel }) => {

@@ -45,7 +45,7 @@ const DepartmentPage: React.FC = () => {
             case 'course':
                 return <DepartmentCourseStructure dept={dept} />;
             case 'program':
-                return <DepartmentStudents dept={dept} sectionLabel="Programs" />;
+                return <DepartmentStudents dept={dept} sectionLabel="Program" />;
             case 'students':
                 return <DepartmentStudents dept={dept} sectionLabel="Students" />;
             case 'gallery':
