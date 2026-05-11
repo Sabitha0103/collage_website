@@ -16,6 +16,7 @@ function formatLabel(key: string): string {
 }
 
 function normalize(value: string): string {
+    // Normalize user-provided values to allow matching department code/slug/name variants.
     return value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
@@ -159,9 +160,9 @@ const DepartmentCSVUpload: React.FC<DepartmentCSVUploadProps> = ({ dept, section
                             No additional columns found for this department.
                         </p>
                     ) : (
-                        filteredRows.map((row) => (
+                        filteredRows.map((row, rowIndex) => (
                             <div
-                                key={`${row.department}-${columns.map(column => row[column] ?? '').join('|')}`}
+                                key={`${csvState.fileName}-${row.department}-${rowIndex}`}
                                 className="rounded-xl border border-neutral-200 bg-warm-50 p-4"
                             >
                                 <p className="text-xs font-bold uppercase tracking-[0.15em] mb-3" style={{ color: '#F85E00' }}>
