@@ -153,7 +153,7 @@ const DepartmentCSVUpload: React.FC<DepartmentCSVUploadProps> = ({ dept, section
                             style={{ background: '#FFF7ED', borderColor: '#FDBA74', color: '#9A3412' }}
                         >
                             No rows found for this department. Add a row where <code>department</code> matches{' '}
-                            <strong>{dept.code}</strong>, <strong>{dept.slug}</strong>, or the department name.
+                            <strong>{dept.code}</strong>, <strong>{dept.slug}</strong>, or the department full/name.
                         </div>
                     ) : columns.length === 0 ? (
                         <p className="text-sm text-neutral-500 italic">

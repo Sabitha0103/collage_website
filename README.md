@@ -25,7 +25,7 @@ MEC,400+,5 awards,80%
 
 | Column | Required | Description |
 |---|---|---|
-| `department` | ✅ Yes | Name/code/slug that identifies the department |
+| `department` | ✅ Yes | Code, slug, name, or full department name that identifies the department |
 | `students` | No | Student count or description |
 | `achievements` | No | Notable achievements |
 | `placements` | No | Placement statistics |
