@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { DepartmentData } from '../../data/departments';
+import DepartmentCSVUpload from './DepartmentCSVUpload';
 
 /* ── Year tabs ─────────────────────────────────────────── */
 const years = ['2025-26', '2024-25', '2023-24', '2022-23', '2021-22'];
@@ -185,7 +187,12 @@ const sections: SectionData[] = [
 
 /* ── Component ─────────────────────────────────────────── */
 
-const DepartmentStudents: React.FC = () => {
+interface DepartmentStudentsProps {
+    dept: DepartmentData;
+    sectionLabel: 'Programs' | 'Students';
+}
+
+const DepartmentStudents: React.FC<DepartmentStudentsProps> = ({ dept, sectionLabel }) => {
     const [openSection, setOpenSection] = useState<string | null>('academic');
     const [activeYears, setActiveYears] = useState<Record<string, string>>(
         Object.fromEntries(sections.map((s) => [s.key, '2025-26']))
@@ -200,21 +207,23 @@ const DepartmentStudents: React.FC = () => {
     };
 
     return (
-        <div className="space-y-3">
-            {sections.map((section) => {
-                const isOpen = openSection === section.key;
-                const currentYear = activeYears[section.key];
-                const rows = section.data[currentYear] || [];
+        <div className="space-y-6">
+            <DepartmentCSVUpload dept={dept} sectionLabel={sectionLabel} />
+            <div className="space-y-3">
+                {sections.map((section) => {
+                    const isOpen = openSection === section.key;
+                    const currentYear = activeYears[section.key];
+                    const rows = section.data[currentYear] || [];
 
-                return (
-                    <div
-                        key={section.key}
-                        className="rounded-xl overflow-hidden transition-all duration-300"
-                        style={{
-                            border: isOpen ? '1px solid rgba(248, 94, 0, 0.15)' : '1px solid rgba(10, 9, 3, 0.06)',
-                            boxShadow: isOpen ? '0 4px 20px rgba(248, 94, 0, 0.08)' : '0 1px 4px rgba(0,0,0,0.03)',
-                        }}
-                    >
+                    return (
+                        <div
+                            key={section.key}
+                            className="rounded-xl overflow-hidden transition-all duration-300"
+                            style={{
+                                border: isOpen ? '1px solid rgba(248, 94, 0, 0.15)' : '1px solid rgba(10, 9, 3, 0.06)',
+                                boxShadow: isOpen ? '0 4px 20px rgba(248, 94, 0, 0.08)' : '0 1px 4px rgba(0,0,0,0.03)',
+                            }}
+                        >
                         {/* ── Accordion Header ─────────────────────── */}
                         <button
                             onClick={() => toggleSection(section.key)}
@@ -365,9 +374,10 @@ const DepartmentStudents: React.FC = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-                    </div>
-                );
-            })}
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 };

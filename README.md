@@ -1,16 +1,16 @@
 # SRIT College Website
 
-## Departments Page – CSV Upload Feature
+## Department Pages – CSV Upload Feature
 
-The **Departments** page (`/departments`) includes a section that lets any user upload a `.csv` file to display department-specific data (students, achievements, placements, and any other columns) directly on the page.
+CSV upload is available inside each department page (`/departments/:slug`) in both the **Program** and **Students** sections.
 
 ### How it works
 
-1. Navigate to the **Departments** page (`/departments`).
-2. Scroll down past the department cards to find the **"Upload Department CSV"** section.
-3. Click **Choose File** (or drag-and-drop a `.csv` file onto the upload zone).
-4. The data is parsed in the browser, validated, and rendered immediately as department cards.
-5. The parsed data is persisted in **`localStorage`** so it survives page refreshes. Use the **Remove** button to clear it.
+1. Navigate to any department page (example: `/departments/cse`).
+2. Open either **Program** or **Students** from the department sidebar.
+3. Use the **Upload Department CSV** option to upload a `.csv` file.
+4. Data is parsed in the browser and filtered so each department page only shows matching rows.
+5. Parsed data is persisted in **`localStorage`** so it survives page refreshes. Use **Remove** to clear it.
 
 ### Expected CSV format
 
@@ -25,7 +25,7 @@ MEC,400+,5 awards,80%
 
 | Column | Required | Description |
 |---|---|---|
-| `department` | ✅ Yes (or `name` as a fallback) | Name that identifies the department |
+| `department` | ✅ Yes | Name/code/slug that identifies the department |
 | `students` | No | Student count or description |
 | `achievements` | No | Notable achievements |
 | `placements` | No | Placement statistics |
@@ -34,7 +34,7 @@ MEC,400+,5 awards,80%
 **Rules:**
 - The file must have a `.csv` extension.
 - The file must not be empty.
-- At least one column named `department` (or `name`) is required.
+- A `department` column is required.
 - Rows with an empty `department` value are silently skipped.
 - Column headers are normalised to lowercase with underscores (e.g. `Faculty Count` → `faculty_count`).
 
@@ -46,17 +46,20 @@ MEC,400+,5 awards,80%
 | Empty file | *"The uploaded file is empty."* |
 | Missing required column | *"CSV must contain a 'department' column …"* |
 | No valid rows | *"No valid department rows found …"* |
+| No row for current department | *"No rows found for this department …"* |
 
 ### Manual testing steps
 
 1. Start the dev server: `npm run dev`
-2. Open `http://localhost:5173/departments` in a browser.
-3. Scroll to the **Upload Department CSV** section.
-4. Upload a valid CSV (see format above) and confirm the department cards appear.
-5. Refresh the page — the data should still be visible (localStorage persistence).
-6. Click **Remove** — the cards should disappear and the upload zone should reappear.
-7. Try uploading a `.txt` file — an error banner should appear.
-8. Try uploading a CSV missing the `department` column — an error should appear.
+2. Open `http://localhost:5173/departments/cse` in a browser.
+3. Click **Program** and verify the **Upload Department CSV** option is visible.
+4. Upload a valid CSV (see format above) with a `department` row for `CSE` and verify only CSE row data appears.
+5. Click **Students** and verify the same upload option and filtered data are visible there as well.
+6. Navigate to another department (`/departments/ece`) and verify the CSE row is not shown (no-row message appears).
+7. Refresh the page — uploaded data should still be available (localStorage persistence).
+8. Click **Remove** — uploaded data should clear.
+9. Try uploading a `.txt` file — an error banner should appear.
+10. Try uploading a CSV missing `department` column — an error should appear.
 
 ---
 

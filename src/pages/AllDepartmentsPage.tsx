@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Departments from '../components/Departments';
-import CSVDepartmentUpload from '../components/CSVDepartmentUpload';
 import Footer from '../components/Footer';
 
 const AllDepartmentsPage: React.FC = () => {
@@ -10,7 +9,6 @@ const AllDepartmentsPage: React.FC = () => {
             <Navbar />
             <main className="flex-1 py-12">
                 <Departments />
-                <CSVDepartmentUpload />
             </main>
             <Footer />
         </div>

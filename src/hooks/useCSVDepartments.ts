@@ -97,29 +97,19 @@ export function useCSVDepartments(): UseCSVDepartmentsReturn {
             try {
                 const { headers, rows } = parseCSV(text);
 
-                // Determine which column identifies the department
-                const deptColumn = headers.includes('department')
-                    ? 'department'
-                    : headers.includes('name')
-                    ? 'name'
-                    : null;
-
-                if (!deptColumn) {
+                if (!headers.includes('department')) {
                     setError(
-                        'CSV must contain a "department" column (or "name" as a fallback) to identify each department.'
+                        'CSV must contain a "department" column to identify each department.'
                     );
                     return;
                 }
 
-                // Normalise: ensure every row exposes key "department"
-                const normalizedHeaders = headers.map(h => (h === 'name' ? 'department' : h));
-
                 const normalizedRows: CSVDepartmentRow[] = rows
                     .map(row => {
-                        const dept = row[deptColumn] ?? '';
+                        const dept = row.department ?? '';
                         const rest: Record<string, string> = {};
                         for (const k of Object.keys(row)) {
-                            if (k !== deptColumn) rest[k] = row[k];
+                            if (k !== 'department') rest[k] = row[k];
                         }
                         return { department: dept, ...rest };
                     })
@@ -131,7 +121,7 @@ export function useCSVDepartments(): UseCSVDepartmentsReturn {
                 }
 
                 const state: CSVState = {
-                    headers: normalizedHeaders,
+                    headers,
                     rows: normalizedRows,
                     fileName: file.name,
                     uploadedAt: new Date().toISOString(),
